@@ -45,15 +45,3 @@ compatibility. Any change that breaks the public API will only be introduced at
 a major-version release. As a result of this policy, you can (and should)
 specify any dependency on JSON Resume Schema by using the Pessimistic Version
 Constraint with two digits of precision.
-
-### Proposals to reinvestigate
-
-- [#69 - Standard format for phone numbers](https://github.com/jsonresume/resume-schema/issues/69)
-- [#44 - Person-Job Fit ](https://github.com/jsonresume/resume-schema/issues/44)
-- [#12 - geotag location in work ](https://github.com/jsonresume/resume-schema/issues/12)
-- [#51 - Support multiple positions within one job](https://github.com/jsonresume/resume-schema/issues/51)
-
-### Other resume standards
-
-- [HR-XML](https://schemas.liquid-technologies.com/HR-XML/2007-04-15/)
-- [Europass](http://europass.cedefop.europa.eu/about-europass)
