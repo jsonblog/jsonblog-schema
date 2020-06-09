@@ -1,6 +1,6 @@
 {
   "name": "jsonblog-schema",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "JSON Blog Schema",
   "main": "validator.js",
   "scripts": {
