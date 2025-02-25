@@ -60,9 +60,9 @@ export const BlogSchema = z.object({
 export type Blog = z.infer<typeof BlogSchema>;
 
 // Validation function
-export function validateBlog(blog: unknown): { success: boolean; error?: string } {
+export async function validateBlog(blog: unknown): Promise<{ success: boolean; error?: string }> {
   try {
-    BlogSchema.parse(blog);
+    await Promise.resolve(BlogSchema.parseAsync(blog));
     return { success: true };
   } catch (error) {
     if (error instanceof z.ZodError) {

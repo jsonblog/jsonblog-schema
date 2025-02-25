@@ -47,13 +47,13 @@ describe('Blog Schema Validation', () => {
     ],
   };
 
-  it('should validate a correct blog object', () => {
-    const result = validateBlog(validBlog);
+  it('should validate a correct blog object', async () => {
+    const result = await validateBlog(validBlog);
     expect(result.success).toBe(true);
     expect(result.error).toBeUndefined();
   });
 
-  it('should fail on missing required fields', () => {
+  it('should fail on missing required fields', async () => {
     const invalidBlog = {
       site: {
         description: 'Missing title',
@@ -64,12 +64,12 @@ describe('Blog Schema Validation', () => {
       posts: [],
     };
 
-    const result = validateBlog(invalidBlog);
+    const result = await validateBlog(invalidBlog);
     expect(result.success).toBe(false);
     expect(result.error).toContain('site.title');
   });
 
-  it('should validate dates correctly', () => {
+  it('should validate dates correctly', async () => {
     const blogWithInvalidDate = {
       ...validBlog,
       posts: [
@@ -80,12 +80,12 @@ describe('Blog Schema Validation', () => {
       ],
     };
 
-    const result = validateBlog(blogWithInvalidDate);
+    const result = await validateBlog(blogWithInvalidDate);
     expect(result.success).toBe(false);
     expect(result.error).toContain('startDate');
   });
 
-  it('should allow optional fields to be omitted', () => {
+  it('should allow optional fields to be omitted', async () => {
     const minimalBlog = {
       site: {
         title: 'Minimal Blog',
@@ -100,18 +100,18 @@ describe('Blog Schema Validation', () => {
       ],
     };
 
-    const result = validateBlog(minimalBlog);
+    const result = await validateBlog(minimalBlog);
     expect(result.success).toBe(true);
   });
 
-  it('should validate sample.blog.json', () => {
+  it('should validate sample.blog.json', async () => {
     const samplePath = path.join(__dirname, '../../sample.blog.json');
     const sampleBlog = JSON.parse(fs.readFileSync(samplePath, 'utf-8'));
     
     // The sample has a "pages" field which isn't in the schema
     delete sampleBlog.pages;
     
-    const result = validateBlog(sampleBlog);
+    const result = await validateBlog(sampleBlog);
     if (!result.success) {
       console.log('Validation errors:', result.error);
     }

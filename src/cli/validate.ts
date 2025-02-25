@@ -13,7 +13,7 @@ program
     try {
       const content = await fs.readFile(file, 'utf-8');
       const blog = JSON.parse(content);
-      const result = validateBlog(blog);
+      const result = await validateBlog(blog);
       
       if (result.success) {
         console.log('✅ Blog file is valid');
