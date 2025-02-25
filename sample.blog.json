@@ -1,33 +1,46 @@
 {
   "site": {
     "title": "My Blog",
-    "description": "hopefully someone likes this"
+    "description": "A showcase blog"
   },
   "basics": {
-    "name": "Thomas Davis"
+    "name": "Thomas Davis",
+    "label": "Software Engineer",
+    "image": "https://example.com/avatar.jpg",
+    "email": "thomas@example.com",
+    "phone": "+1234567890",
+    "url": "https://example.com"
   },
   "posts": [
     {
-      "title": "Jeans favorite theme",
-      "source": "https://gist.githubusercontent.com/thomasdavis/3654cb08bf728f23a96bf70a037e5817/raw/dd38c0fb1094159789cc980e20f0544b664ed3c1/nobody.md"
+      "title": "My First Post",
+      "description": "An introduction to my blog",
+      "source": "./first-post.md",
+      "createdAt": "2025-02-24",
+      "updatedAt": "2025-02-24"
     },
     {
-      "title": "My First Blog Post",
-      "source": "https://gist.githubusercontent.com/thomasdavis/7de3d31b99f7355b42c645192bfb15ea/raw/563260399bf8f94af29701cb781ecac314f901a5/deadly.md"
-    },
-    {
-      "title": "Reptiles run the world",
-      "source": "https://gist.githubusercontent.com/thomasdavis/03b712d36272c9e79535c583bf8e70b8/raw/1aa2f00e62ac85d1f51d0792facb1af8db4b6ef3/second.md"
+      "title": "Second Post",
+      "description": "More thoughts on blogging",
+      "source": "./second-post.md",
+      "createdAt": "2025-02-25",
+      "updatedAt": "2025-02-25"
     }
   ],
   "pages": [
     {
       "title": "About",
-      "source": "https://gist.githubusercontent.com/thomasdavis/7451150385ee571e4ef87ffcefabc583/raw/about.md"
+      "description": "Learn more about me",
+      "source": "./about.md",
+      "createdAt": "2025-02-24",
+      "updatedAt": "2025-02-24"
     },
     {
       "title": "Contact",
-      "source": "https://gist.githubusercontent.com/thomasdavis/855f6d9869236b89de4a87a636ab3ac2/raw/contact.md"
+      "description": "Get in touch",
+      "source": "./contact.md",
+      "createdAt": "2025-02-24",
+      "updatedAt": "2025-02-24"
     }
   ]
 }

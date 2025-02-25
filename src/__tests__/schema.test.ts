@@ -7,42 +7,20 @@ describe('Blog Schema Validation', () => {
     site: {
       title: 'My Blog',
       description: 'A test blog',
-      email: 'site@example.com',
-      url: 'https://example.com',
-      profiles: [
-        {
-          network: 'github',
-          url: 'https://github.com/sitename',
-          username: 'sitename',
-        },
-      ],
     },
     basics: {
       name: 'John Doe',
       label: 'Web Developer',
       email: 'john@example.com',
       url: 'https://example.com',
-      location: {
-        city: 'San Francisco',
-        region: 'California',
-        countryCode: 'US',
-      },
-      profiles: [
-        {
-          network: 'github',
-          url: 'https://github.com/johndoe',
-          username: 'johndoe',
-        },
-      ],
     },
     posts: [
       {
         title: 'First Post',
-        source: 'Personal Blog',
         description: 'My first blog post',
-        startDate: '2023-01-01',
-        summary: 'Hello World',
-        highlights: ['First highlight', 'Second highlight'],
+        source: './first-post.md',
+        createdAt: '2023-01-01',
+        updatedAt: '2023-01-02',
       },
     ],
   };
@@ -75,14 +53,14 @@ describe('Blog Schema Validation', () => {
       posts: [
         {
           ...validBlog.posts[0],
-          startDate: '2023/01/01', // Wrong format
+          createdAt: '2023/01/01', // Wrong format
         },
       ],
     };
 
     const result = await validateBlog(blogWithInvalidDate);
     expect(result.success).toBe(false);
-    expect(result.error).toContain('startDate');
+    expect(result.error).toContain('createdAt');
   });
 
   it('should allow optional fields to be omitted', async () => {
@@ -102,19 +80,13 @@ describe('Blog Schema Validation', () => {
 
     const result = await validateBlog(minimalBlog);
     expect(result.success).toBe(true);
+    expect(result.error).toBeUndefined();
   });
 
   it('should validate sample.blog.json', async () => {
     const samplePath = path.join(__dirname, '../../sample.blog.json');
-    const sampleBlog = JSON.parse(fs.readFileSync(samplePath, 'utf-8'));
-    
-    // The sample has a "pages" field which isn't in the schema
-    delete sampleBlog.pages;
-    
+    const sampleBlog = JSON.parse(fs.readFileSync(samplePath, 'utf8'));
     const result = await validateBlog(sampleBlog);
-    if (!result.success) {
-      console.log('Validation errors:', result.error);
-    }
     expect(result.success).toBe(true);
     expect(result.error).toBeUndefined();
   });

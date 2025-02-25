@@ -1,6 +1,6 @@
 {
   "name": "jsonblog-schema",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A community-driven schema for blog content that emphasizes portability and content ownership",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
