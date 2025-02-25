@@ -9,16 +9,6 @@ export const BlogSchema = z.object({
   site: z.object({
     title: z.string(),
     description: z.string().optional(),
-    image: z.string().optional(),
-    email: z.string().email().optional(),
-    phone: z.string().optional(),
-    url: z.string().url().optional(),
-    summary: z.string().optional(),
-    profiles: z.array(z.object({
-      network: z.string(),
-      username: z.string().optional(),
-      url: z.string().url().optional(),
-    }).catchall(z.any())).optional(),
   }).catchall(z.any()),
 
   basics: z.object({
@@ -28,33 +18,24 @@ export const BlogSchema = z.object({
     email: z.string().email().optional(),
     phone: z.string().optional(),
     url: z.string().url().optional(),
-    summary: z.string().optional(),
-    location: z.object({
-      address: z.string().optional(),
-      postalCode: z.string().optional(),
-      city: z.string().optional(),
-      countryCode: z.string().optional(),
-      region: z.string().optional(),
-    }).catchall(z.any()).optional(),
-    profiles: z.array(z.object({
-      network: z.string(),
-      username: z.string().optional(),
-      url: z.string().url().optional(),
-    }).catchall(z.any())).optional(),
   }).catchall(z.any()),
 
   posts: z.array(z.object({
     title: z.string(),
-    source: z.string().optional(),
     description: z.string().optional(),
-    position: z.string().optional(),
-    url: z.string().url().optional(),
-    startDate: iso8601.optional(),
-    endDate: iso8601.optional(),
-    summary: z.string().optional(),
-    highlights: z.array(z.string()).optional(),
+    source: z.string().optional(),
+    createdAt: iso8601.optional(),
+    updatedAt: iso8601.optional(),
   }).catchall(z.any())),
-}).strict(); // This matches additionalProperties: false at the root level
+
+  pages: z.array(z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    source: z.string().optional(),
+    createdAt: iso8601.optional(),
+    updatedAt: iso8601.optional(),
+  }).catchall(z.any())).optional(),
+}).strict();
 
 // Type inference
 export type Blog = z.infer<typeof BlogSchema>;

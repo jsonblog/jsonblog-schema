@@ -11,16 +11,6 @@ exports.BlogSchema = zod_1.z.object({
     site: zod_1.z.object({
         title: zod_1.z.string(),
         description: zod_1.z.string().optional(),
-        image: zod_1.z.string().optional(),
-        email: zod_1.z.string().email().optional(),
-        phone: zod_1.z.string().optional(),
-        url: zod_1.z.string().url().optional(),
-        summary: zod_1.z.string().optional(),
-        profiles: zod_1.z.array(zod_1.z.object({
-            network: zod_1.z.string(),
-            username: zod_1.z.string().optional(),
-            url: zod_1.z.string().url().optional(),
-        }).catchall(zod_1.z.any())).optional(),
     }).catchall(zod_1.z.any()),
     basics: zod_1.z.object({
         name: zod_1.z.string(),
@@ -29,36 +19,26 @@ exports.BlogSchema = zod_1.z.object({
         email: zod_1.z.string().email().optional(),
         phone: zod_1.z.string().optional(),
         url: zod_1.z.string().url().optional(),
-        summary: zod_1.z.string().optional(),
-        location: zod_1.z.object({
-            address: zod_1.z.string().optional(),
-            postalCode: zod_1.z.string().optional(),
-            city: zod_1.z.string().optional(),
-            countryCode: zod_1.z.string().optional(),
-            region: zod_1.z.string().optional(),
-        }).catchall(zod_1.z.any()).optional(),
-        profiles: zod_1.z.array(zod_1.z.object({
-            network: zod_1.z.string(),
-            username: zod_1.z.string().optional(),
-            url: zod_1.z.string().url().optional(),
-        }).catchall(zod_1.z.any())).optional(),
     }).catchall(zod_1.z.any()),
     posts: zod_1.z.array(zod_1.z.object({
         title: zod_1.z.string(),
-        source: zod_1.z.string().optional(),
         description: zod_1.z.string().optional(),
-        position: zod_1.z.string().optional(),
-        url: zod_1.z.string().url().optional(),
-        startDate: iso8601.optional(),
-        endDate: iso8601.optional(),
-        summary: zod_1.z.string().optional(),
-        highlights: zod_1.z.array(zod_1.z.string()).optional(),
+        source: zod_1.z.string().optional(),
+        createdAt: iso8601.optional(),
+        updatedAt: iso8601.optional(),
     }).catchall(zod_1.z.any())),
-}).strict(); // This matches additionalProperties: false at the root level
+    pages: zod_1.z.array(zod_1.z.object({
+        title: zod_1.z.string(),
+        description: zod_1.z.string().optional(),
+        source: zod_1.z.string().optional(),
+        createdAt: iso8601.optional(),
+        updatedAt: iso8601.optional(),
+    }).catchall(zod_1.z.any())).optional(),
+}).strict();
 // Validation function
-function validateBlog(blog) {
+async function validateBlog(blog) {
     try {
-        exports.BlogSchema.parse(blog);
+        await Promise.resolve(exports.BlogSchema.parseAsync(blog));
         return { success: true };
     }
     catch (error) {

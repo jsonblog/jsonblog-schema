@@ -11,7 +11,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "description": "link to the version of the schema that can validate the resume",
+      "description": "link to the version of the schema that can validate the blog",
       "format": "uri"
     },
     "site": {
@@ -23,53 +23,7 @@
         },
         "description": {
           "type": "string",
-          "description": "e.g. Web Developer"
-        },
-        "image": {
-          "type": "string",
-          "description": "URL (as per RFC 3986) to a image in JPEG or PNG format"
-        },
-        "email": {
-          "type": "string",
-          "description": "e.g. thomas@gmail.com",
-          "format": "email"
-        },
-        "phone": {
-          "type": "string",
-          "description": "Phone numbers are stored as strings so use any format you like, e.g. 712-117-2923"
-        },
-        "url": {
-          "type": "string",
-          "description": "URL (as per RFC 3986) to your website, e.g. personal homepage",
-          "format": "uri"
-        },
-        "summary": {
-          "type": "string",
-          "description": "Write a short 2-3 sentence biography about yourself"
-        },
-        "profiles": {
-          "type": "array",
-          "description": "Specify any number of social networks that you participate in",
-          "additionalItems": false,
-          "items": {
-            "type": "object",
-            "additionalProperties": true,
-            "properties": {
-              "network": {
-                "type": "string",
-                "description": "e.g. Facebook or Twitter"
-              },
-              "username": {
-                "type": "string",
-                "description": "e.g. neutralthoughts"
-              },
-              "url": {
-                "type": "string",
-                "description": "e.g. http://twitter.example.com/neutralthoughts",
-                "format": "uri"
-              }
-            }
-          }
+          "description": "Welcome to my webpage"
         }
       }
     },
@@ -165,43 +119,21 @@
         "properties": {
           "title": {
             "type": "string",
-            "description": "e.g. Facebook"
-          },
-          "source": {
-            "type": "string",
-            "description": "e.g. Menlo Park, CA"
+            "description": "Welcome to my blog"
           },
           "description": {
             "type": "string",
-            "description": "e.g. Social Media Company"
+            "description": "Welcome to my post"
           },
-          "position": {
+          "source": {
             "type": "string",
-            "description": "e.g. Software Engineer"
+            "description": "./first-blog.md"
           },
-          "url": {
-            "type": "string",
-            "description": "e.g. http://facebook.example.com",
-            "format": "uri"
-          },
-          "startDate": {
+          "createdAt": {
             "$ref": "#/definitions/iso8601"
           },
-          "endDate": {
+          "updatedAt": {
             "$ref": "#/definitions/iso8601"
-          },
-          "summary": {
-            "type": "string",
-            "description": "Give an overview of your responsibilities at the company"
-          },
-          "highlights": {
-            "type": "array",
-            "description": "Specify multiple accomplishments",
-            "additionalItems": false,
-            "items": {
-              "type": "string",
-              "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
-            }
           }
         }
       }
@@ -215,43 +147,21 @@
         "properties": {
           "title": {
             "type": "string",
-            "description": "e.g. Facebook"
-          },
-          "source": {
-            "type": "string",
-            "description": "e.g. Menlo Park, CA"
+            "description": "About page"
           },
           "description": {
             "type": "string",
-            "description": "e.g. Social Media Company"
+            "description": "Welcome to my webpage"
           },
-          "position": {
+          "source": {
             "type": "string",
-            "description": "e.g. Software Engineer"
+            "description": "./about-me.md"
           },
-          "url": {
-            "type": "string",
-            "description": "e.g. http://facebook.example.com",
-            "format": "uri"
-          },
-          "startDate": {
+          "createdAt": {
             "$ref": "#/definitions/iso8601"
           },
-          "endDate": {
+          "updatedAt": {
             "$ref": "#/definitions/iso8601"
-          },
-          "summary": {
-            "type": "string",
-            "description": "Give an overview of your responsibilities at the company"
-          },
-          "highlights": {
-            "type": "array",
-            "description": "Specify multiple accomplishments",
-            "additionalItems": false,
-            "items": {
-              "type": "string",
-              "description": "e.g. Increased profits by 20% from 2011-2012 through viral advertising"
-            }
           }
         }
       }

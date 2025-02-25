@@ -16,7 +16,7 @@ program
     try {
         const content = await promises_1.default.readFile(file, 'utf-8');
         const blog = JSON.parse(content);
-        const result = (0, index_1.validateBlog)(blog);
+        const result = await (0, index_1.validateBlog)(blog);
         if (result.success) {
             console.log('✅ Blog file is valid');
             process.exit(0);
